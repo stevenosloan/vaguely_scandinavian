@@ -1,0 +1,132 @@
+---
+layout: bare
+---
+<?php
+
+  error_reporting(E_ALL);
+
+  set_include_path( <%= php_include_path %> );
+  require_once 'mandrill.class.php';
+
+  $mandrill_key = 'e58e79a3-7898-4e45-8e9e-6bf17a2b5f37';
+  $contact_info = 'info@vaguelyscandinavian.com';
+
+  $msg = '<h1>Doh!</h1><p>Looks like you didn\'t post a message for use ... please do that.</p>';
+  $status = "error";
+
+  /*
+  **  only do stuff if the form is submitted
+  */
+  if( $_POST['contactSend'] ){
+
+    /*
+    ** gather form details
+    */
+    $email = $_POST['contactEmail'];
+    $name = $_POST['contactName'];
+    $message = $_POST['contactMessage'];
+
+    $valid = true;
+
+    // email must be valid
+    if( $email == "" || !check_email_address( $email ) ){
+      $valid = false;
+      $msg = '&ldquo;'.htmlspecialchars( $email, ENT_QUOTES, "utf8" ) . "&rdquo; is an invalid email address, please correct it and submit the form again.";
+      $status = "email";
+    }
+
+    // name & message must be filled
+    if( $name == "" || $message == "" ){
+      $valid = false;
+      $msg = "Please check your entry. All fields are required.";
+    }
+
+    if( $valid ){
+
+      /*
+      **  set the api key
+      */
+      define( 'MANDRILL_API_KEY', $mandrill_key );
+      Mandrill::setVerbose(true);
+
+      $request_json = '{
+        "type": "messages",
+        "call": "send",
+        "message": {
+          "subject": "Vaguely Scandinavian Inquiry",
+          "from_email": "'.$email.'",
+          "from_name": "'.$name.'",
+          "html": "<html><body><p>'.$message.'</p></body></html>",
+          "text": "'.$message.'",
+          "to": [{
+            "email": "'.$contact_info.'",
+            "name": "Vaguely Scandinavian"
+          }],
+          "track_opens": false,
+          "track_clicks": false,
+          "auto_text": true,
+          "auto_html": true,
+          "tags": ["inquiry"],
+          "url_strip_qs": true
+        }
+      }';
+
+      // try and send mail
+      $send = Mandrill::call((array) json_decode($request_json));
+
+      // check return
+      if( $send[0]->status == "sent" ){
+        $msg = "<h1>Success!</h1><p>We'll get in touch with you as soon as we can.<br /><br />Also, sorry you had to see this, it looks like you have javascript turned off.</p>";
+        $status = "success";
+      } else {
+        $msg = '<h1>Failure!</h1><p>Doh, either we messed up or the information you gave us is invalid. Try again or just email us directly at info@vaguelyscandinavian.com</p>';
+      }
+    }
+
+  }
+
+  if( isset( $_GET["ajax"]) ) {
+    echo $status;
+  } else {
+    echo $msg;
+  }
+
+  function check_email_address($email) {
+
+    // First, we check that there's one @ symbol,
+    // and that the lengths are right.
+    if (!ereg("^[^@]{1,64}@[^@]{1,255}$", $email)) {
+      // Email invalid because wrong number of characters
+      // in one section or wrong number of @ symbols.
+      return false;
+    }
+
+    // Split it into sections to make life easier
+    $email_array = explode("@", $email);
+    $local_array = explode(".", $email_array[0]);
+    for ($i = 0; $i < sizeof($local_array); $i++) {
+      if ( !ereg("^(([A-Za-z0-9!#$%&'*+/=?^_`{|}~-][A-Za-z0-9!#$%&↪'*+/=?^_`{|}~\.-]{0,63})|(\"[^(\\|\")]{0,62}\"))$", $local_array[$i]) ) {
+        return false;
+      }
+    }
+
+    // Check if domain is IP. If not,
+    // it should be valid domain name
+    if (!ereg("^\[?[0-9\.]+\]?$", $email_array[1])) {
+
+      $domain_array = explode(".", $email_array[1]);
+      if (sizeof($domain_array) < 2) {
+        return false; // Not enough parts to domain
+      }
+
+      for ($i = 0; $i < sizeof($domain_array); $i++) {
+        if ( !ereg("^(([A-Za-z0-9][A-Za-z0-9-]{0,61}[A-Za-z0-9])|↪([A-Za-z0-9]+))$", $domain_array[$i]) ) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
+
+?>
