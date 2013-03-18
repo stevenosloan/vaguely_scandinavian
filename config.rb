@@ -6,7 +6,7 @@ $LOAD_PATH << File.join( Dir.pwd, '/lib' )
 
 activate :directory_indexes
 
-page "/*.php.erb" do
+page "/*.php" do
   set :layout, "layout"
 end
 # this atleast works on vagrant for now
@@ -54,6 +54,9 @@ set :haml, { ugly: true, format: :html5 }
 
 #   Helpers
 # -----------------------------------------
+
+require 'helpers'
+helpers CustomHelpers
 
 
 #   Build Specific Configs

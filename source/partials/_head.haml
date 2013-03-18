@@ -1,0 +1,32 @@
+%meta{ charset: "UTF-8" }
+
+%title Vaguely Scandinavian | Design & Build for the Internet
+
+= stylesheet_link_tag "css"
+%link{ rel: "icon", href: "assets/favicon.png", type: "image/png" }
+
+%meta{ name: "viewport", content: "width=device-width, initial-scale=1" }
+
+= javascript_include_tag "script"
+%script{ type: "text/javascript" }
+  :plain
+    $script("https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js", 'jquery', function() {
+      $script("#{script_url 'vsInit'}", 'vsInit');
+    });
+
+:plain
+  <!--[if lt IE 9]>
+    <script type="text/javascript" src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+%script{ type: "text/javascript" }
+  :plain
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-20512100-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
