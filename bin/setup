@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Run this script immediately after cloning the codebase.
+# You may have the chmod 755 bin/setup to get it to run
+
+# Install Bundler
+gem install bundler
+
+# Install Gems
+bundle install

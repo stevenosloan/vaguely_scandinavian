@@ -1,0 +1,8 @@
+.DS_Store
+.sass-cache
+.sass_cache
+build
+vagrant/cookbooks
+vagrant/tmp
+.yardoc
+log/*
