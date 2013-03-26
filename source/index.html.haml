@@ -1,0 +1,103 @@
+---
+layout: layout.haml
+---
+
+%header#header
+  .width
+    %h1 Vaguely Scandinavian
+    %nav#nav
+      %ul
+        %li
+          %a{ href: "#contact" } Contact
+
+#contentWrapper
+
+  %section.section.statement
+    %p.header We make
+    %h1 Clean, economical, &amp; easy-to-maintain websites for artists, designers, & start-ups.
+
+  %section.section
+    %h1.header We are
+    %p
+      <a href="http://travisekmark.com">Travis Ekmark</a> &amp; <a href="http://stevenosloan.com">Steven Sloan</a> — two guys who admire clean, functional, and contemporary design. We formed Vaguely Scandinavian in 2010 to serve as a platform for empowering independent artists, designers, and businesses to express their voices on the web. <a href="#contact">Drop us a line</a> if you'd like to learn more.
+
+  %section.section
+    %h1.header We design &amp; built
+
+    %ul
+      %li
+        %a{ href: "http://finnjewelry.com"} Finn Jewelry
+      %li
+        %a{ href: "http://peopleofresource.com", rel: "external" } People of Resource
+        %span.collab at <a href="http://peopleofresource.com" rel="external">People of Resource</a> w/ <a href="http://stephenjameskennedy.com">Stephen Kennedy</a> & <a href="http://www.peopleofresource.com/about/david-vanarsdale" rel="external">David VanArsdale</a>
+      %li
+        %a{ href: "http://kristenvcahill.com" } Kristen V. Cahill
+      %li
+        %a{ href: "http://yard-architect.net" } YAR+D Architecture
+      %li
+        %a{ href: "http://southerndesignconcern.com" } The Southern Design Concern
+
+  %section.section
+    %h2.header We designed
+
+    %ul
+      %li
+        %a{ href: "http://www.huntzandwhite.com/" } Huntz &amp; White
+      %li
+        %a{ href: "http://greatnessflickers.com" } Filckering Productions
+      %li
+        %a{ href: "http://gables.com" } Gables
+        %span.collab
+          at
+          %a{ href: "http://digitalscientists.com", rel: "external" } Digital Scientists
+
+  %section.section
+
+    %h2.header We built
+
+    %ul
+      %li
+        %a{ href: "http://theoptimistrestaurant.com/" } The Optimist
+        %span.collab
+          designed by
+          %a{ href: "http://www.alvindiec.com/" } Alvin Diec
+      %li
+        %a{ href: "http://nicholaskomor.com" } Nicholas Komor
+      %li
+        %a{ href: "http://porchlightatl.com/" } Porchlight
+      %li
+        %a{ href: "http://cgaldia.com"} Constru-Guía al día
+      %li
+        %a{ href: "http://creaturellc.com" } Creature, llc
+      %li
+        %a{ href: "http://stephenjameskennedy.com" } Stephen James Kennedy
+
+  %section.section#contact
+
+    %form#theContactForm{ action: "contact.php", method: "post" }
+      %h2.header We&rsquo;d love to hear from you
+
+      %label{ for: "contactName" } Name
+      %input{ type: "text", name: "contactName", id: "contactName" }
+
+      %label{ for: "contactEmail" } Email
+      %input{ type: "email", name: "contactEmail", id: "contactEmail", autocomplete: "off", autocapitalize: "off" }
+
+      %label{ for: "contactMessage" } Message
+      %textarea{ name: "contactMessage", id: "contactMessage" }
+
+      %input.submit{ type: "submit", id: "contactSend", name: "contactSend", value: "Send" }
+
+    #contactMessages
+      %p.contactWorking Your message is being sent ...
+      %p.contactOops There was an error. Please try again or email us: info@vaguelyscandinavian.com
+      %p.contactFill Please fill out all the fields
+      %p.contactEmail Please enter a valid email address
+      %p.contactSuccess Success! Your message has been sent. We'll get back to you as soon as we can
+
+%footer#footer
+  .width
+    %p
+      &copy;2010-#{Time.now().strftime("%Y")} Vaguely Scandinavian, llc.  All rights reserved.
+      %br
+      Design / Build for the Internet.
