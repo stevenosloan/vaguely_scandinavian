@@ -20,7 +20,7 @@ gem "nokogiri"
 gem "therubyracer"
 
 ## deploy
-gem "statistrano", :path => "/Users/stevensloan/code/statistrano"
+gem "statistrano", :git => 'git@github.com:mailchimp/statistrano.git'
 
 group :development do
   gem "thin"

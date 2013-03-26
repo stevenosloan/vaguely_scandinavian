@@ -1,5 +1,6 @@
-PATH
-  remote: /Users/stevensloan/code/statistrano
+GIT
+  remote: git@github.com:mailchimp/statistrano.git
+  revision: a7b4189bc15d93e4a2fe778bc26c9860adf03f19
   specs:
     statistrano (0.1.1)
       colorize (~> 0.5.8)
