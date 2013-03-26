@@ -9,7 +9,7 @@ layout: bare
   require_once 'mandrill.class.php';
   require_once 'config.php';
 
-  $mandrill_key = config["mandrill_key"];
+  $mandrill_key = $config["mandrill_key"];
   $contact_info = 'info@vaguelyscandinavian.com';
 
   $msg = '<h1>Doh!</h1><p>Looks like you didn\'t post a message for use ... please do that.</p>';
