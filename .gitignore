@@ -6,3 +6,4 @@ vagrant/cookbooks
 vagrant/tmp
 .yardoc
 log/*
+source/inc/config.php

@@ -7,8 +7,9 @@ layout: bare
 
   set_include_path( <%= php_include_path %> );
   require_once 'mandrill.class.php';
+  require_once 'config.php';
 
-  $mandrill_key = 'e58e79a3-7898-4e45-8e9e-6bf17a2b5f37';
+  $mandrill_key = config["mandrill_key"];
   $contact_info = 'info@vaguelyscandinavian.com';
 
   $msg = '<h1>Doh!</h1><p>Looks like you didn\'t post a message for use ... please do that.</p>';
