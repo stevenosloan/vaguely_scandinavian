@@ -1,0 +1,248 @@
+@charset "UTF-8";
+
+/*
+**  Table of Contents
+**
+**  1.  Mixins
+**  2.  Includes
+**  3.  Parts
+**
+*/
+
+
+
+/*    Mixins
+--------------------------------------------------- */
+
+@import "_lib/@mixins.scss";
+
+
+
+/*    Includes
+--------------------------------------------------- */
+
+@import "_lib/reset.scss";
+@import "_lib/fonts.scss";
+
+@import "_lib/$variables.scss";
+
+
+/*    Base
+--------------------------------------------------- */
+
+body {
+  font-family: $sans-serif;
+  color: $dark;
+  @include smaller_than($hobbit) {
+    font-size: 90%;
+  }
+}
+
+a {
+  color: inherit;
+  &:hover {
+    color: $black;
+    text-decoration: underline;
+  }
+}
+
+.big-list {
+  padding: 0;
+  list-style: none;
+  li {
+    padding: as_em(6/16) 0;
+    .project-title {
+      @extend %heading;
+      margin-right: as_em(6/50);
+    }
+    .collab {
+      @extend %body;
+      display: inline-block;
+    }
+  }
+}
+
+
+label {
+  display: inline-block;
+  width: percentage(1/5);
+  vertical-align: top;
+  font-family: $serif;
+  @extend %body;
+  @include smaller_than( $hobbit ) {
+    width: percentage(1);
+  }
+}
+
+input,
+textarea {
+  @extend %small;
+  @include appearance(none);
+  border-width: 1px;
+  border-style: solid;
+  border-color: $blue;
+  outline: none;
+  display: inline-block;
+  width: percentage(4/5);
+  @include box-sizing;
+  vertical-align: top;
+  @include transition( all, .3s, ease );
+  margin-bottom: as_em(24/18);
+  height: as_em( 48/18 );
+  padding: 0 $gutter;
+  &:hover {
+    border-color: mix( $dark, $blue, 50% );
+  }
+  &:focus {
+    @include transition( all, .8s, ease );
+    border-color: mix( $dark, $blue, 50% );
+    @include box-shadow( 0 0 0 1px mix( $dark, $blue, 50% ) );
+  }
+  @include smaller_than( $hobbit ) {
+    width: percentage(1);
+  }
+  &[type="submit"] {
+    @extend %body;
+    height: as_em( 54/30 );
+    width: percentage(1/5);
+    margin-left: percentage(4/5);
+    background: mix( $dark, $blue, 20% );
+    font-family: $serif;
+    color: $white;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    cursor: pointer;
+    &:hover,
+    &:focus {
+      background: mix( $dark, $blue, 50% );
+    }
+    @include smaller_than( $human ) {
+      width: percentage(1/2);
+      margin-left: percentage(1/2);
+    }
+  }
+}
+
+textarea {
+  height: as_em( 156/18 );
+  padding: $gutter;
+}
+
+#contactMessages {
+  p {
+    background: $yellow;
+    color: $dark;
+    padding: 1em;
+    display: none;
+  }
+}
+
+
+/*    Layout
+--------------------------------------------------- */
+
+.content {
+  width: 100%;
+  max-width: $max_width;
+  padding-left: $double_gutter;
+  padding-right: $double_gutter;
+  margin-left: auto;
+  margin-right: auto;
+  @include box-sizing;
+}
+
+.block {
+  padding: 2em 0;
+  padding: 6vh 0;
+
+  .block-title {
+    margin-bottom: as_em(12/16);
+    h2 {
+      @extend %small;
+      background: $dark;
+      padding: as_em(2/18) as_em(18/18) as_em(4/18) as_em(18/18);
+      margin-left: -1em;
+      margin-right: -1em;
+      display: inline-block;
+      color: $white;
+    }
+  }
+
+  .block-content {
+    font-family: $serif;
+    p {
+      @extend %body;
+      margin-top: 1em;
+    }
+  }
+}
+
+
+
+/*    Parts
+--------------------------------------------------- */
+
+#site-nav {
+  background: $white;
+  padding: $baseline 0;
+
+  .logo,
+  .site-nav {
+    display: inline-block;
+  }
+
+  .logo {
+    width: percentage(3/4);
+    text-decoration: none;
+    h1 {
+      @extend %body;
+      font-weight: bold;
+    }
+  }
+  .site-nav {
+    width: percentage(1/4);
+    text-align: right;
+  }
+}
+
+
+#page-banner {
+  background: $blue;
+  color: $white;
+  padding: 3em 0;
+  padding: 12vh 0;
+
+  h1 {
+    @extend %heading;
+    font-family: $serif;
+    font-weight: normal;
+  }
+}
+
+#contact {
+  background: $blue;
+  color: $white;
+
+  .block {
+    margin-top: 2em;
+    margin-top: 6vh;
+    padding-top: 0;
+    .block-title {
+      position: relative;
+      bottom: as_em(11/18);
+    }
+    .block-content {
+      padding-top: 2em;
+      padding-top: 6vh;
+    }
+  }
+}
+
+#site-footer {
+  background: $dark;
+  color: $white;
+  padding: 1em 0;
+  p {
+    @extend %small;
+  }
+}

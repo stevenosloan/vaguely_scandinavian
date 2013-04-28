@@ -1,0 +1,63 @@
+/*
+**
+**
+*/
+
+/*    Colors
+------------------------------------------ */
+
+$blue: #66CCFF;
+$yellow: #fff3a6;
+
+$black: #111111;
+$dark: #333333;
+$mid: #555555;
+$light: #dddddd;
+$white: #ffffff;
+
+
+/*    Layout
+------------------------------------------ */
+
+$max_width: as_em(904/16);
+$human: as_em(640/16);
+$hobbit: as_em(480/16);
+
+
+/*    Typography
+------------------------------------------ */
+
+$baseline: as_em(6/16);
+$gutter: as_em(18/16);
+$double_gutter: as_em(36/16);
+
+$heading: as_em(50/16);
+$body: as_em(21/16);
+$small: as_em(13/16);
+
+$line-heading: (54/50);
+$line-body: (30/21);
+$line-small: (18/13);
+
+
+$sans-serif: "Helvetica Neue", Arial, Helvetica, sans-serif;
+$serif: "Times New Roman", Times, Georgia, serif;
+
+%heading {
+  font-size: $heading;
+  line-height: $line-heading;
+  @include smaller_than( $hobbit ) {
+    font-size: as_em( 40/16 );
+    line-height: (42/40);
+  }
+}
+
+%body {
+  font-size: $body;
+  line-height: $line-body;
+}
+
+%small {
+  font-size: $small;
+  line-height: $line-small;
+}

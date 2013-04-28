@@ -2,102 +2,113 @@
 layout: layout.haml
 ---
 
-%header#header
-  .width
-    %h1 Vaguely Scandinavian
-    %nav#nav
-      %ul
-        %li
-          %a{ href: "#contact" } Contact
+%header#site-nav
+  .content
+    %a.logo{ href: "/" }>
+      %h1 Vaguely Scandinavian
+    %nav.site-nav>
+      %a{ href: "#contact" } Contact
 
-#contentWrapper
 
-  %section.section.statement
-    %p.header We make
-    %h1 Clean, economical, &amp; easy-to-maintain websites for artists, designers, & start-ups.
+%article{ role: "main" }
 
-  %section.section
-    %h1.header We are
-    %p
-      <a href="http://travisekmark.com">Travis Ekmark</a> &amp; <a href="http://stevenosloan.com">Steven Sloan</a> — two guys who admire clean, functional, and contemporary design. We formed Vaguely Scandinavian in 2010 to serve as a platform for empowering independent artists, designers, and businesses to express their voices on the web. <a href="#contact">Drop us a line</a> if you'd like to learn more.
+  %header#page-banner
+    .content
+      %h1 Clean, economical, &amp; easy-to-maintain websites for artists, designers, & start-ups.
 
-  %section.section
-    %h1.header We design &amp; built
+  .content
 
-    %ul
-      %li
-        %a{ href: "http://finnjewelry.com"} Finn Jewelry
-      %li
-        %a{ href: "http://peopleofresource.com", rel: "external" } People of Resource
-        %span.collab at <a href="http://peopleofresource.com" rel="external">People of Resource</a> w/ <a href="http://stephenjameskennedy.com">Stephen Kennedy</a> & <a href="http://www.peopleofresource.com/about/david-vanarsdale" rel="external">David VanArsdale</a>
-      %li
-        %a{ href: "http://kristenvcahill.com" } Kristen V. Cahill
-      %li
-        %a{ href: "http://yard-architect.net" } YAR+D Architecture
-      %li
-        %a{ href: "http://thesoutherndesignconcern.com" } The Southern Design Concern
+    .block
+      .block-title
+        %h2 We are
+      .block-content
+        :markdown
+          [Travis Ekmark](http://travisekmark.com) &amp; [Steven Sloan](http://stevenosloan.com) — two guys who admire clean, functional, and contemporary design. We formed Vaguely Scandinavian in 2010 to serve as a platform for empowering independent artists, designers, and businesses to express their voices on the web. [Drop us a line](#contact) if you'd like to learn more.
 
-  %section.section
-    %h2.header We designed
+    .block
+      .block-title
+        %h2.header We design &amp; built
+      .block-content
+        %ul.big-list
+          %li
+            %a.project-title{ href: "http://finnjewelry.com"} Finn Jewelry
+          %li
+            %a.project-title{ href: "http://peopleofresource.com", rel: "external" } People of Resource
+            %span.collab at <a href="http://peopleofresource.com" rel="external">People of Resource</a> w/ <a href="http://stephenjameskennedy.com">Stephen Kennedy</a> & <a href="http://www.peopleofresource.com/about/david-vanarsdale" rel="external">David VanArsdale</a>
+          %li
+            %a.project-title{ href: "http://kristenvcahill.com" } Kristen V. Cahill
+          %li
+            %a.project-title{ href: "http://yard-architect.net" } YAR+D Architecture
+          %li
+            %a.project-title{ href: "http://thesoutherndesignconcern.com" } The Southern Design Concern
 
-    %ul
-      %li
-        %a{ href: "http://www.huntzandwhite.com/" } Huntz &amp; White
-      %li
-        %a{ href: "http://greatnessflickers.com" } Filckering Productions
-      %li
-        %a{ href: "http://gables.com" } Gables
-        %span.collab
-          at
-          %a{ href: "http://digitalscientists.com", rel: "external" } Digital Scientists
+    .block
+      .block-title
+        %h2.header We Designed
+      .block-content
+        %ul.big-list
+          %li
+            %a.project-title{ href: "http://www.huntzandwhite.com/" } Huntz &amp; White
+          %li
+            %a.project-title{ href: "http://greatnessflickers.com" } Filckering Productions
+          %li
+            %a.project-title{ href: "http://gables.com" } Gables
+            %span.collab
+              at
+              %a{ href: "http://digitalscientists.com", rel: "external" } Digital Scientists
 
-  %section.section
+    .block
+      .block-title
+        %h2.header We Developed
+      .block-content
+        %ul.big-list
+          %li
+            %a.project-title{ href: "http://theoptimistrestaurant.com/" } The Optimist
+            %span.collab
+              designed by
+              %a{ href: "http://www.alvindiec.com/" } Alvin Diec
+          %li
+            %a.project-title{ href: "http://nicholaskomor.com" } Nicholas Komor
+          %li
+            %a.project-title{ href: "http://porchlightatl.com/" } Porchlight
+          %li
+            %a.project-title{ href: "http://cgaldia.com"} Constru-Guía al día
+          %li
+            %a.project-title{ href: "http://creaturellc.com" } Creature, llc
+          %li
+            %a.project-title{ href: "http://stephenjameskennedy.com" } Stephen James Kennedy
 
-    %h2.header We built
+  #contact
+    .content
+      .block
+        .block-title
+          %h2.header We&rsquo;d love to hear from you
 
-    %ul
-      %li
-        %a{ href: "http://theoptimistrestaurant.com/" } The Optimist
-        %span.collab
-          designed by
-          %a{ href: "http://www.alvindiec.com/" } Alvin Diec
-      %li
-        %a{ href: "http://nicholaskomor.com" } Nicholas Komor
-      %li
-        %a{ href: "http://porchlightatl.com/" } Porchlight
-      %li
-        %a{ href: "http://cgaldia.com"} Constru-Guía al día
-      %li
-        %a{ href: "http://creaturellc.com" } Creature, llc
-      %li
-        %a{ href: "http://stephenjameskennedy.com" } Stephen James Kennedy
+        .block-content
+          %form#theContactForm{ action: "contact.php", method: "post" }
 
-  %section.section#contact
+            %label{ for: "contactName" }> Name
+            %input{ type: "text", name: "contactName", id: "contactName" }>
 
-    %form#theContactForm{ action: "contact.php", method: "post" }
-      %h2.header We&rsquo;d love to hear from you
+            %label{ for: "contactEmail" }> Email
+            %input{ type: "email", name: "contactEmail", id: "contactEmail", autocomplete: "off", autocapitalize: "off" }>
 
-      %label{ for: "contactName" } Name
-      %input{ type: "text", name: "contactName", id: "contactName" }
+            %label{ for: "contactMessage" }> Message
+            %textarea{ name: "contactMessage", id: "contactMessage" }>
 
-      %label{ for: "contactEmail" } Email
-      %input{ type: "email", name: "contactEmail", id: "contactEmail", autocomplete: "off", autocapitalize: "off" }
+            %input.submit{ type: "submit", id: "contactSend", name: "contactSend", value: "Send" }>
 
-      %label{ for: "contactMessage" } Message
-      %textarea{ name: "contactMessage", id: "contactMessage" }
+          #contactMessages
+            %p.contactWorking Your message is being sent ...
+            %p.contactOops There was an error. Please try again or email us: info@vaguelyscandinavian.com
+            %p.contactFill Please fill out all the fields
+            %p.contactEmail Please enter a valid email address
+            %p.contactSuccess Success! Your message has been sent. We'll get back to you as soon as we can
 
-      %input.submit{ type: "submit", id: "contactSend", name: "contactSend", value: "Send" }
 
-    #contactMessages
-      %p.contactWorking Your message is being sent ...
-      %p.contactOops There was an error. Please try again or email us: info@vaguelyscandinavian.com
-      %p.contactFill Please fill out all the fields
-      %p.contactEmail Please enter a valid email address
-      %p.contactSuccess Success! Your message has been sent. We'll get back to you as soon as we can
-
-%footer#footer
-  .width
-    %p
+%footer#site-footer
+  .content
+    %p.colophon
       &copy;2010-#{Time.now().strftime("%Y")} Vaguely Scandinavian, llc.  All rights reserved.
       %br
       Design / Build for the Internet.

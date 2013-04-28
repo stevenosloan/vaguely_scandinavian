@@ -1,0 +1,73 @@
+
+/*    Functions
+----------------------------------- */
+
+@function as_em( $val ) {
+  @return #{$val}em;
+}
+
+@function clean($vars...) {
+  $list: ();
+  @each $var in $vars {
+    @if $var {
+      $list: append($list, $var, space);
+    }
+  }
+  @return $list;
+}
+
+
+/*    Layout
+----------------------------------- */
+
+@mixin box-sizing( $type: border-box ) {
+  -moz-box-sizing: $type;
+  -webkit-box-sizing: $type;
+  box-sizing: $type;
+}
+
+@mixin larger_than( $breakpoint ) {
+  @media screen and (min-width: $breakpoint ) {
+    @content;
+  }
+}
+
+@mixin smaller_than( $breakpoint ) {
+  @media screen and (max-width: $breakpoint ) {
+    @content;
+  }
+}
+
+
+/*    Style
+----------------------------------- */
+
+@mixin border-radius( $tl, $tr: $tl, $br: $tl, $bl: $tl ) {
+  -webkit-border-radius: $tl $tr $br $bl;
+     -moz-border-radius: $tl $tr $br $bl;
+          border-radius: $tl $tr $br $bl;
+}
+
+@mixin appearance( $arg: none ) {
+  -moz-appearance: $arg;
+  -webkit-appearance: $arg;
+}
+
+@mixin placeholder() {
+  &::-webkit-input-placeholder  { @content; }
+  &:-moz-placeholder            { @content; }
+  &::-moz-placeholder           { @content; }
+  &:-ms-input-placeholder       { @content; }
+}
+
+@mixin box-shadow( $args, $arg2: false, $arg3: false , $arg4: false ){
+  -webkit-box-shadow: compact( $args, $arg2, $arg3, $arg4 );
+  box-shadow: compact( $args, $arg2, $arg3, $arg4 );
+}
+
+@mixin transition( $type: all, $time: .3s, $easing: linear, $delay: false ) {
+       -o-transition: clean( $type, $time, $easing, $delay );
+     -moz-transition: clean( $type, $time, $easing, $delay );
+  -webkit-transition: clean( $type, $time, $easing, $delay );
+          transition: clean( $type, $time, $easing, $delay );
+}
