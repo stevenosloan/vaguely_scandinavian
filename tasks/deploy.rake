@@ -1,7 +1,11 @@
 require 'statistrano'
 
-define_server "production" do
-  set :remote, 'digitalocean'
-  set :project_root, "/var/www/vaguelyscandinavian.com"
-  set :git_check_branch, "master"
+define_deployment "production", :releases do |config|
+
+  config.remote = 'digitalocean'
+  config.build_task = 'middleman:build'
+  config.local_dir = 'build'
+  config.remote_dir = '/var/www/vaguelyscandinavian.com'
+  config.git_branch = 'master'
+
 end
